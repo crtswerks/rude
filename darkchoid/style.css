@@ -292,6 +292,10 @@ button:disabled {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+.form-input, .form-select, .form-textarea {
+  @apply w-full border border-gray-300 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors;
+}
+
 /* ==================== BADGE STYLES ==================== */
 .badge {
   display: inline-block;
@@ -336,6 +340,18 @@ button:disabled {
     max-height: 90vh;
     overflow-y: auto;
   }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
 }
 
 /* ==================== PRINT STYLES ==================== */
@@ -352,6 +368,34 @@ button:disabled {
   
   .print-only {
     display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
   }
 }
 

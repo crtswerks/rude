@@ -13,145 +13,144 @@
 <head>
   <meta name="robots" content="noindex, nofollow">
 </head>
-<body class="bg-amber-50 text-gray-800 dark:bg-white dark:text-gray-300 min-h-screen">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
 
-  <header class="bg-gradient-to-r from-green-700 to-green-600 text-white p-4 shadow-lg sticky top-0 z-50">
+  <header class="bg-white dark:bg-gray-800 p-4 shadow-md sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <img src="assets/konoha-logo.png" alt="Logo" class="w-10 h-10 rounded-full bg-white p-1">
-        <h1 class="text-2xl font-bold">Konoha Admin Dashboard</h1>
+        <img src="assets/konoha-logo.png" alt="Logo" class="w-10 h-10 rounded-full bg-gray-200 p-1">
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Konoha Admin</h1>
       </div>
-      <div class="flex items-center space-x-3">
-        <span class="text-sm">👤 Admin</span>
-        <button id="logoutBtn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition shadow-md">
+      <div class="flex items-center space-x-4">
+        <span class="text-sm font-medium text-gray-600 dark:text-gray-400">👤 Admin</span>
+        <button id="logoutBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition shadow-sm hover:shadow-lg">
           Logout
         </button>
       </div>
     </div>
   </header>
 
-  <main class="container mx-auto p-6 space-y-10 max-w-7xl"> <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="bg-white dark:bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 hover:bg-white dark:hover:bg-gray-900 transition-colors">
+  <main class="container mx-auto p-4 md:p-6 space-y-8 max-w-7xl">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stats-grid">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-blue-500 card-hover">
         <div class="flex justify-between items-start">
           <div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Paket Menu</p>
-            <p id="totalPackages" class="text-3xl font-bold text-blue-600 dark:text-blue-400">0</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Paket Menu</p>
+            <p id="totalPackages" class="text-3xl font-bold text-gray-800 dark:text-white">0</p>
           </div>
-          <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
+          <div class="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full">
             <span class="text-2xl">📦</span>
           </div>
         </div>
       </div>
-      
-      <div class="bg-white dark:bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 hover:bg-white dark:hover:bg-gray-900 transition-colors">
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-green-500 card-hover">
         <div class="flex justify-between items-start">
           <div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Menu A La Carte</p>
-            <p id="totalDishes" class="text-3xl font-bold text-green-600 dark:text-green-400">0</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Menu A La Carte</p>
+            <p id="totalDishes" class="text-3xl font-bold text-gray-800 dark:text-white">0</p>
           </div>
-          <div class="bg-green-100 dark:bg-green-900 p-3 rounded-lg">
+          <div class="bg-green-100 dark:bg-green-900/50 p-3 rounded-full">
             <span class="text-2xl">🍽️</span>
           </div>
         </div>
       </div>
-      
-      <div class="bg-white dark:bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:bg-white dark:hover:bg-gray-900 transition-colors">
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-yellow-500 card-hover">
         <div class="flex justify-between items-start">
           <div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Menu</p>
-            <p id="totalItems" class="text-3xl font-bold text-yellow-600 dark:text-yellow-400">0</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Menu</p>
+            <p id="totalItems" class="text-3xl font-bold text-gray-800 dark:text-white">0</p>
           </div>
-          <div class="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-lg">
+          <div class="bg-yellow-100 dark:bg-yellow-900/50 p-3 rounded-full">
             <span class="text-2xl">📋</span>
           </div>
         </div>
       </div>
-      
-      <div class="bg-white dark:bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 hover:bg-white dark:hover:bg-gray-900 transition-colors">
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-purple-500 card-hover">
         <div class="flex justify-between items-start">
           <div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Pesanan</p>
-            <p id="totalOrders" class="text-3xl font-bold text-purple-600 dark:text-purple-400">0</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Pesanan</p>
+            <p id="totalOrders" class="text-3xl font-bold text-gray-800 dark:text-white">0</p>
           </div>
-          <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg">
+          <div class="bg-purple-100 dark:bg-purple-900/50 p-3 rounded-full">
             <span class="text-2xl">🛒</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-purple-600 p-6 transition-colors"> <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-purple-700 dark:text-purple-400">Kelola Pesanan</h2> <button onclick="renderTables()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition font-semibold"> 🔄 Refresh
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-purple-600 p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Pesanan</h2>
+        <button onclick="renderTables()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition font-semibold shadow-sm hover:shadow-md">
+          🔄 Refresh
         </button>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto table-responsive">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="bg-gradient-to-r from-purple-600 to-purple-500 text-white">
-              <th class="border border-purple-700 p-3 text-left">Kode & Tanggal</th>
-              <th class="border border-purple-700 p-3 text-left">Pelanggan</th>
-              <th class="border border-purple-700 p-3 text-left">Pesanan</th>
-              <th class="border border-purple-700 p-3 text-left">Total</th>
-              <th class="border border-purple-700 p-3 text-left">Waktu Kirim</th>
-              <th class="border border-purple-700 p-3 text-center">Status</th>
-              <th class="border border-purple-700 p-3 text-center">Aksi</th>
+            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+              <th class="p-3 text-left">Kode & Tanggal</th>
+              <th class="p-3 text-left">Pelanggan</th>
+              <th class="p-3 text-left">Pesanan</th>
+              <th class="p-3 text-left">Total</th>
+              <th class="p-3 text-left">Waktu Kirim</th>
+              <th class="p-3 text-center">Status</th>
+              <th class="p-3 text-center">Aksi</th>
             </tr>
           </thead>
-          <tbody id="ordersTable" class="bg-white dark:bg-white hover-orange-200"></tbody>
+          <tbody id="ordersTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
         </table>
       </div>
     </section>
 
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-green-600 p-6 transition-colors"> <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-green-700 dark:text-orange-400">Kelola Kode Diskon</h2> <button onclick="toggleDiscountForm()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold">
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-green-600 p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Kode Diskon</h2>
+        <button onclick="toggleDiscountForm()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold shadow-sm hover:shadow-md">
           + Tambah Kode Diskon
         </button>
       </div>
 
-      <div id="discountFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-gray-200 dark:border-gray-600">
-        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Tambah Kode Diskon Baru</h3>
-        <form id="discountForm" class="space-y-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div id="discountFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Tambah Kode Diskon Baru</h3>
+        <form id="discountForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-400">Kode Diskon *</label>
-              <input type="text" id="discountCodeInput" placeholder="KONOHA10" 
-                     class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Kode Diskon *</label>
+              <input type="text" id="discountCodeInput" placeholder="KONOHA10" class="form-input" required>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-400">Tipe Diskon *</label>
-              <select id="discountType" class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 dark:border-gray-600 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipe Diskon *</label>
+              <select id="discountType" class="form-select" required>
                 <option value="percentage">Persentase (%)</option>
                 <option value="fixed">Nominal Tetap (Rp)</option>
               </select>
             </div>
           </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-400">Nilai Diskon *</label>
-              <input type="number" id="discountValue" placeholder="10" 
-                     class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Nilai Diskon *</label>
+              <input type="number" id="discountValue" placeholder="10" class="form-input" required>
               <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Untuk persentase: 10 = 10%, untuk tetap: 5000 = Rp 5.000</p>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-400">Minimal Pembelian (Rp)</label>
-              <input type="number" id="minPurchase" placeholder="0" value="0"
-                     class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Minimal Pembelian (Rp)</label>
+              <input type="number" id="minPurchase" placeholder="0" value="0" class="form-input">
             </div>
           </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-400">Minimal Kuantitas (Qty)</label>
-              <input type="number" id="minQuantity" placeholder="0" value="0"
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Minimal Kuantitas (Qty)</label>
+              <input type="number" id="minQuantity" placeholder="0" value="0" class="form-input">
               <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Total jumlah item (paket & a la carte). 0 = tidak ada batas.</p>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-400">Maksimal Diskon (Rp)</label>
-              <input type="number" id="maxDiscount" placeholder="0" value="0"
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Maksimal Diskon (Rp)</label>
+              <input type="number" id="maxDiscount" placeholder="0" value="0" class="form-input">
               <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">0 = tidak ada batas, hanya berlaku untuk diskon persentase</p>
             </div>
           </div>
@@ -166,109 +165,108 @@
         </form>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto table-responsive">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="bg-gradient-to-r from-green-600 to-green-500 text-white">
-              <th class="border border-green-700 p-3 text-left">Kode</th>
-              <th class="border border-green-700 p-3 text-left">Nilai</th>
-              <th class="border border-green-700 p-3 text-left">Minimal Order</th> <th class="border border-green-700 p-3 text-left">Max. Diskon</th>
-              <th class="border border-green-700 p-3 text-center">Status</th>
-              <th class="border border-green-700 p-3 text-center">Aksi</th>
+            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+              <th class="p-3 text-left">Kode</th>
+              <th class="p-3 text-left">Nilai</th>
+              <th class="p-3 text-left">Minimal Order</th>
+              <th class="p-3 text-left">Max. Diskon</th>
+              <th class="p-3 text-center">Status</th>
+              <th class="p-3 text-center">Aksi</th>
             </tr>
           </thead>
-          <tbody id="discountTable" class="bg-white dark:bg-white"></tbody>
+          <tbody id="discountTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
         </table>
       </div>
     </section>
 
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-yellow-600 p-6 transition-colors"> <h2 class="text-2xl font-bold text-orange-400 dark:text-orange-400 mb-4">Pengaturan Sistem</h2> <form id="settingsForm" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="p-4 bg-blue-900/60 dark:bg-blue-900/60 rounded-lg">
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-yellow-600 p-6">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Pengaturan Sistem</h2>
+      <form id="settingsForm" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <div class="flex items-center justify-between mb-3">
-              <h3 class="font-semibold text-gray-200 dark:text-gray-200">Pajak</h3>
+              <h3 class="font-semibold text-gray-800 dark:text-white">Pajak</h3>
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="taxToggle" class="sr-only peer">
-                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-600"></div>
+                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-yellow-600"></div>
               </label>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-700">Tarif Pajak (%)</label>
-              <input type="number" id="taxRate" step="0.1" value="10" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 text-sm bg-white dark:white dark:text-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tarif Pajak (%)</label>
+              <input type="number" id="taxRate" step="0.1" value="10" class="form-input">
             </div>
           </div>
 
-          <div class="p-4 bg-green-900/60 dark:bg-green-900/60 rounded-lg">
+          <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <div class="flex items-center justify-between mb-3">
-              <h3 class="font-semibold text-gray-200 dark:text-gray-200">Biaya Antar</h3>
+              <h3 class="font-semibold text-gray-800 dark:text-white">Biaya Antar</h3>
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="shippingToggle" class="sr-only peer">
-                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-600"></div>
+                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-yellow-600"></div>
               </label>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-700">Biaya (Rp)</label>
-              <input type="number" id="shippingCost" value="5000" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Biaya (Rp)</label>
+              <input type="number" id="shippingCost" value="5000" class="form-input">
             </div>
           </div>
 
-          <div class="p-4 bg-purple-900/60 dark:bg-purple-900/60 rounded-lg">
+          <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <div class="flex items-center justify-between mb-3">
-              <h3 class="font-semibold text-gray-200 dark:text-gray-200">Fitur Diskon</h3>
+              <h3 class="font-semibold text-gray-800 dark:text-white">Fitur Diskon</h3>
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="discountToggle" class="sr-only peer">
-                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-600"></div>
+                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-yellow-600"></div>
               </label>
             </div>
-            <p class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-700">Aktifkan/nonaktifkan penggunaan kode diskon oleh pelanggan</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Aktifkan/nonaktifkan penggunaan kode diskon oleh pelanggan.</p>
           </div>
 
-          <div class="p-4 bg-red-900/60 dark:bg-red-900/60 rounded-lg">
+          <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <div class="mb-3">
-              <h3 class="font-semibold text-gray-200 dark:text-gray-200">Ambang Stok Rendah</h3>
+              <h3 class="font-semibold text-gray-800 dark:text-white">Ambang Stok Rendah</h3>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-700">Jumlah (item)</label>
-              <input type="number" id="lowStockThreshold" value="5"
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Jumlah (item)</label>
+              <input type="number" id="lowStockThreshold" value="5" class="form-input">
             </div>
           </div>
         </div>
 
-        <button type="submit" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition font-semibold">
+        <button type="submit" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition font-semibold shadow-sm hover:shadow-md">
           Simpan Pengaturan
         </button>
       </form>
     </section>
 
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-yellow-600 p-6 transition-colors"> <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-yellow-700 dark:text-orange-400">Kelola Paket Menu</h2> <button onclick="togglePackageForm()" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold"> + Tambah Paket Baru
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-yellow-600 p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Paket Menu</h2>
+        <button onclick="togglePackageForm()" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold shadow-sm hover:shadow-md">
+          + Tambah Paket Baru
         </button>
       </div>
 
-      <div id="packageFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-gray-200 dark:border-gray-600">
-        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Tambah Paket Menu Baru</h3>
-        <form id="packageForm" class="space-y-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div id="packageFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Tambah Paket Menu Baru</h3>
+        <form id="packageForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Nama Paket *</label>
-              <input type="text" id="pkgName" placeholder="Contoh: Paket Ayam Serundeng" 
-                     class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required>
+              <input type="text" id="pkgName" placeholder="Contoh: Paket Ayam Serundeng" class="form-input" required>
             </div>
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Harga (Rp) *</label>
-              <input type="number" id="pkgPrice" placeholder="25000" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
+              <input type="number" id="pkgPrice" placeholder="25000" class="form-input" required>
             </div>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Stok</label>
-              <input type="number" id="pkgStock" placeholder="Kosongkan untuk tanpa batas" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <input type="number" id="pkgStock" placeholder="Kosongkan untuk tanpa batas" class="form-input">
               <p class="text-xs text-gray-500 mt-1">Kosong/tidak diisi = stok tidak terbatas</p>
             </div>
             <div class="flex items-end">
@@ -276,50 +274,40 @@
                 <input type="checkbox" id="pkgActive" checked>
                 <span class="toggle-slider"></span>
               </label>
-              <span class="ml-2 text-sm">Aktif</span>
+              <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Aktif</span>
             </div>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Kecil (Rp)</label>
-              <input type="number" id="pkgPriceSmall" placeholder="20000" class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <input type="number" id="pkgPriceSmall" placeholder="20000" class="form-input">
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Normal (Rp) — sama dengan harga menu</label>
-              <input type="number" id="pkgPriceNormal" placeholder="25000" class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" readonly>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Normal (Rp)</label>
+              <input type="number" id="pkgPriceNormal" placeholder="25000" class="form-input bg-gray-200 dark:bg-gray-700" readonly>
             </div>
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Jumbo (Rp)</label>
-              <input type="number" id="pkgPriceJumbo" placeholder="30000" class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <input type="number" id="pkgPriceJumbo" placeholder="30000" class="form-input">
             </div>
           </div>
-          
           <div>
             <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Isi Menu (pisahkan dengan koma) *</label>
-            <input type="text" id="pkgDishes" placeholder="Nasi, Ayam Serundeng, Sayur, Sambal, Lalapan" 
-                   class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
+            <input type="text" id="pkgDishes" placeholder="Nasi, Ayam Serundeng, Sayur, Sambal, Lalapan" class="form-input" required>
           </div>
-
-          
-
+          <div>
+            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">URL Gambar *</label>
+            <input type="text" id="pkgImage" placeholder="assets/paket-ayam-serundeng.jpg" class="form-input" required>
+          </div>
           <div>
             <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Varian Tambahan</label>
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="block text-xs text-gray-600 dark:text-gray-400 mb-1">Gunakan Template:</label>
-              <div id="pkgTemplateVariants" class="flex flex-wrap gap-2 mb-2"></div>
+              <div id="pkgTemplateVariants" class="flex flex-wrap gap-2"></div>
             </div>
             <div id="pkgVarEditor" class="space-y-3"></div>
-            <button type="button" id="pkgAddGroupBtn" class="mt-2 bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700">+ Tambah Kelompok Varian</button>
+            <button type="button" id="pkgAddGroupBtn" class="mt-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-medium">+ Tambah Kelompok Varian</button>
           </div>
-          
-          <div>
-            <label class="block text-sm font-medium mb-1">URL Gambar *</label>
-            <input type="text" id="pkgImage" placeholder="assets/paket-ayam-serundeng.jpg" 
-                   class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Masukkan path gambar atau URL</p>
-          </div>
-          
           <div class="flex gap-2">
             <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold">
               Simpan Paket
@@ -331,54 +319,50 @@
         </form>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto table-responsive">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="bg-gradient-to-r from-yellow-600 to-yellow-500 text-white">
-              <th class="border border-yellow-700 p-3 text-left">Preview</th>
-              <th class="border border-yellow-700 p-3 text-left">Nama Paket</th>
-              <th class="border border-yellow-700 p-3 text-left">Harga</th>
-              <th class="border border-yellow-700 p-3 text-left">Menu</th>
-              <th class="border border-yellow-700 p-3 text-left">Edit</th>
-              <th class="border border-yellow-700 p-3 text-left">Stok</th>
-              <th class="border border-yellow-700 p-3 text-center">Aksi</th>
+            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+              <th class="p-3 text-left">Preview</th>
+              <th class="p-3 text-left">Nama Paket</th>
+              <th class="p-3 text-left">Harga</th>
+              <th class="p-3 text-left">Menu</th>
+              <th class="p-3 text-left">Stok</th>
+              <th class="p-3 text-center">Status</th>
+              <th class="p-3 text-center">Aksi</th>
             </tr>
           </thead>
-          <tbody id="packageTable" class="bg-white dark:bg-white"></tbody>
+          <tbody id="packageTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
         </table>
       </div>
     </section>
 
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-indigo-600 p-6 transition-colors">
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-indigo-600 p-6">
       <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-indigo-700 dark:text-orange-400">Kelola Template Varian Tambahan</h2>
-        <button onclick="toggleVariantTemplateForm()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition font-semibold">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Template Varian</h2>
+        <button onclick="toggleVariantTemplateForm()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition font-semibold shadow-sm hover:shadow-md">
           + Tambah Template Baru
         </button>
       </div>
 
-      <div id="variantTemplateFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-gray-200 dark:border-gray-600">
-        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Tambah Template Varian Baru</h3>
-        <form id="variantTemplateForm" class="space-y-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div id="variantTemplateFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Tambah Template Varian Baru</h3>
+        <form id="variantTemplateForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Nama Template *</label>
-              <input type="text" id="templateName" placeholder="Contoh: Level Pedas" 
-                     class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 dark:border-gray-600 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required>
+              <input type="text" id="templateName" placeholder="Contoh: Level Pedas" class="form-input" required>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-orange">Nama Grup *</label>
-              <input type="text" id="templateGroup" placeholder="Contoh: Level Pedas" 
-                     class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 dark:border-gray-600 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Nama Grup *</label>
+              <input type="text" id="templateGroup" placeholder="Contoh: Level Pedas" class="form-input" required>
             </div>
           </div>
-
           <div>
             <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Opsi Varian</label>
             <div id="templateVarEditor" class="space-y-2"></div>
-            <button type="button" id="templateAddOptionBtn" class="mt-2 bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700">+Tambah Opsi</button>
+            <button type="button" id="templateAddOptionBtn" class="mt-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-medium">+ Tambah Opsi</button>
           </div>
-          
           <div class="flex gap-2">
             <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition font-semibold">
               Simpan Template
@@ -390,47 +374,46 @@
         </form>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto table-responsive">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white">
-              <th class="border border-indigo-700 p-3 text-left">Nama Template</th>
-              <th class="border border-indigo-700 p-3 text-left">Grup</th>
-              <th class="border border-indigo-700 p-3 text-left">Opsi</th>
-              <th class="border border-indigo-700 p-3 text-center">Aksi</th>
+            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+              <th class="p-3 text-left">Nama Template</th>
+              <th class="p-3 text-left">Grup</th>
+              <th class="p-3 text-left">Opsi</th>
+              <th class="p-3 text-center">Aksi</th>
             </tr>
           </thead>
-          <tbody id="variantTemplatesTable" class="bg-white dark:bg-white"></tbody>
+          <tbody id="variantTemplatesTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
         </table>
       </div>
     </section>
 
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-blue-600 p-6 transition-colors"> <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-blue-700 dark:text-orange-400">Kelola Menu A La Carte</h2> <button onclick="toggleDishForm()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold"> + Tambah Menu Baru
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-blue-600 p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Menu A La Carte</h2>
+        <button onclick="toggleDishForm()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold shadow-sm hover:shadow-md">
+          + Tambah Menu Baru
         </button>
       </div>
 
-      <div id="dishFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-gray-200 dark:border-gray-600">
-        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Tambah Menu A La Carte Baru</h3>
-        <form id="dishForm" class="space-y-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div id="dishFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Tambah Menu A La Carte Baru</h3>
+        <form id="dishForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Nama Menu *</label>
-              <input type="text" id="dishName" placeholder="Contoh: Ayam Goreng" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
+              <input type="text" id="dishName" placeholder="Contoh: Ayam Goreng" class="form-input" required>
             </div>
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Harga (Rp) *</label>
-              <input type="number" id="dishPrice" placeholder="12000" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
+              <input type="number" id="dishPrice" placeholder="12000" class="form-input" required>
             </div>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Stok</label>
-              <input type="number" id="dishStock" placeholder="Kosongkan untuk tanpa batas" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <input type="number" id="dishStock" placeholder="Kosongkan untuk tanpa batas" class="form-input">
               <p class="text-xs text-gray-500 mt-1">Kosong/tidak diisi = stok tidak terbatas</p>
             </div>
             <div class="flex items-end">
@@ -438,29 +421,27 @@
                 <input type="checkbox" id="dishActive" checked>
                 <span class="toggle-slider"></span>
               </label>
-              <span class="ml-2 text-sm">Aktif</span>
+              <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Aktif</span>
             </div>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label class="block text-sm font-medium mb-1">Porsi Kecil (Rp)</label>
-              <input type="number" id="dishPriceSmall" placeholder="10000" class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Kecil (Rp)</label>
+              <input type="number" id="dishPriceSmall" placeholder="10000" class="form-input">
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1">Porsi Normal (Rp) — sama dengan harga menu</label>
-              <input type="number" id="dishPriceNormal" placeholder="12000" class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" readonly>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Normal (Rp)</label>
+              <input type="number" id="dishPriceNormal" placeholder="12000" class="form-input bg-gray-200 dark:bg-gray-700" readonly>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1">Porsi Jumbo (Rp)</label>
-              <input type="number" id="dishPriceJumbo" placeholder="15000" class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Porsi Jumbo (Rp)</label>
+              <input type="number" id="dishPriceJumbo" placeholder="15000" class="form-input">
             </div>
           </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Kategori</label>
-              <select id="dishCategory" class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-black dark:text-gray-300 dark:border-gray-600 hover:bg-white dark:hover:bg-orange-900 hover:text-orange-600 dark:hover:text-orange-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+              <select id="dishCategory" class="form-select">
                 <option value="">Pilih Kategori</option>
                 <option value="Ayam">Ayam</option>
                 <option value="Ikan">Ikan</option>
@@ -473,23 +454,18 @@
             </div>
             <div>
               <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">URL Gambar *</label>
-              <input type="text" id="dishImage" placeholder="assets/ayam-goreng.jpg" 
-                     class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 dark:text-amber-50 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
+              <input type="text" id="dishImage" placeholder="assets/ayam-goreng.jpg" class="form-input" required>
             </div>
           </div>
-
-          
-
           <div>
             <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Varian Tambahan</label>
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="block text-xs text-gray-600 dark:text-gray-400 mb-1">Gunakan Template:</label>
-              <div id="dishTemplateVariants" class="flex flex-wrap gap-2 mb-2"></div>
+              <div id="dishTemplateVariants" class="flex flex-wrap gap-2"></div>
             </div>
             <div id="dishVarEditor" class="space-y-3"></div>
-            <button type="button" id="dishAddGroupBtn" class="mt-2 bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700">+ Tambah Kelompok Varian</button>
+            <button type="button" id="dishAddGroupBtn" class="mt-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-medium">+ Tambah Kelompok Varian</button>
           </div>
-          
           <div class="flex gap-2">
             <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold">
               Simpan Menu
@@ -501,41 +477,164 @@
         </form>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto table-responsive">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
-              <th class="border border-blue-700 p-3 text-left">Preview</th>
-              <th class="border border-blue-700 p-3 text-left">Nama Menu</th>
-              <th class="border border-blue-700 p-3 text-left">Kategori</th>
-              <th class="border border-blue-700 p-3 text-left">Harga</th>
-              <th class="border border-blue-700 p-3 text-left">Edit</th>
-              <th class="border border-blue-700 p-3 text-left">Stok</th>
-              <th class="border border-blue-700 p-3 text-center">Aksi</th>
+            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+              <th class="p-3 text-left">Preview</th>
+              <th class="p-3 text-left">Nama Menu</th>
+              <th class="p-3 text-left">Kategori</th>
+              <th class="p-3 text-left">Harga</th>
+              <th class="p-3 text-left">Stok</th>
+              <th class="p-3 text-center">Status</th>
+              <th class="p-3 text-center">Aksi</th>
             </tr>
           </thead>
-          <tbody id="dishTable" class="bg-white dark:bg-white"></tbody>
+          <tbody id="dishTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
         </table>
       </div>
     </section>
 
-    <section class="bg-orange-200 dark:bg-orange-200 rounded-xl shadow-lg p-6 transition-colors">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-700 mb-4">💾 Backup & Restore</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="p-4 bg-blue-900/70 dark:bg-blue-900/70 rounded-lg">
-          <h3 class="font-semibold mb-2 text-gray-100 dark:text-gray-100">Export Data</h3>
-          <p class="text-sm text-gray-150 dark:text-gray-150 mb-3">Download semua data menu & pesanan dalam format JSON</p>
-          <button onclick="exportData()" class="bg-blue-900/80 text-white px-4 py-2 rounded-lg hover:bg-orange-600/80 transition">
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">💾 Backup & Restore</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold mb-2 text-gray-800 dark:text-white">Export Data</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Download semua data menu & pesanan dalam format JSON.</p>
+          <button onclick="exportData()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold shadow-sm hover:shadow-md">
             📥 Download Backup
           </button>
         </div>
-        <div class="p-4 bg-green-900/70 dark:bg-green-900/70 rounded-lg">
-          <h3 class="font-semibold mb-2 text-gray-100 dark:text-gray-100">Import Data</h3>
-          <p class="text-sm text-gray-150 dark:text-gray-150 mb-3">Upload file backup JSON untuk restore data</p>
+        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold mb-2 text-gray-800 dark:text-white">Import Data</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Upload file backup JSON untuk restore data. Aksi ini akan menimpa data yang ada.</p>
           <input type="file" id="importFile" accept=".json" class="hidden">
-          <button onclick="document.getElementById('importFile').click()" class="bg-green-900/80 text-white px-4 py-2 rounded-lg hover:bg-orange-600/80 transition">
+          <button onclick="document.getElementById('importFile').click()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold shadow-sm hover:shadow-md">
             📤 Upload Backup
           </button>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-yellow-600 p-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Konten Halaman Utama</h2>
+        </div>
+        <form id="cmsForm" class="space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 form-grid">
+            <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700 space-y-4">
+              <h3 class="font-semibold text-gray-800 dark:text-white">Hero Banner</h3>
+              <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Judul</label>
+                <input id="heroTitleInput" type="text" class="form-input">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1 mt-2 text-gray-700 dark:text-gray-300">Subjudul</label>
+                <input id="heroSubtitleInput" type="text" class="form-input">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1 mt-2 text-gray-700 dark:text-gray-300">URL Gambar</label>
+                <input id="heroImageInput" type="text" class="form-input" placeholder="assets/banner.jpg">
+              </div>
+            </div>
+            <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700 space-y-4">
+              <h3 class="font-semibold text-gray-800 dark:text-white">Testimoni</h3>
+              <div class="flex flex-wrap md:flex-nowrap gap-2">
+                <input id="testiName" type="text" placeholder="Nama" class="form-input flex-1 min-w-0">
+                <input id="testiText" type="text" placeholder="Komentar" class="form-input flex-1 min-w-0">
+                <button type="button" id="addTestimonialBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold shadow-sm hover:shadow-md shrink-0">Tambah</button>
+              </div>
+              <div id="testimonialAdminList" class="space-y-2"></div>
+            </div>
+            <div class="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700 space-y-4">
+              <h3 class="font-semibold text-gray-800 dark:text-white">Kontak</h3>
+              <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">WhatsApp</label>
+                <input id="contactWaInput" type="text" class="form-input">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1 mt-2 text-gray-700 dark:text-gray-300">Email</label>
+                <input id="contactEmailInput" type="email" class="form-input">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1 mt-2 text-gray-700 dark:text-gray-300">Alamat</label>
+                <textarea id="contactAddressInput" rows="3" class="form-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition font-semibold shadow-sm hover:shadow-md">Simpan Konten</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-purple-600 p-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Inquiry</h2>
+        </div>
+        <div class="overflow-x-auto table-responsive">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+                <th class="p-3 text-left">Nama</th>
+                <th class="p-3 text-left">Kontak</th>
+                <th class="p-3 text-left">Pesan</th>
+                <th class="p-3 text-left">Waktu</th>
+                <th class="p-3 text-center">Status</th>
+                <th class="p-3 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="inquiriesTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-blue-600 p-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Artikel</h2>
+          <button onclick="toggleArticleForm()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold shadow-sm hover:shadow-md">+ Tambah Artikel</button>
+        </div>
+        <div id="articleFormContainer" class="hidden mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Tambah/Edit Artikel</h3>
+          <form id="articleForm" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 form-grid">
+              <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Judul *</label>
+                <input type="text" id="articleTitle" class="form-input" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tanggal Publikasi</label>
+                <input type="date" id="articleDate" class="form-input">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">URL Gambar</label>
+              <input type="text" id="articleImage" class="form-input" placeholder="assets/artikel.jpg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Konten *</label>
+              <textarea id="articleContent" rows="5" class="form-textarea" required></textarea>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold">Simpan Artikel</button>
+              <button type="button" onclick="toggleArticleForm()" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition">Batal</button>
+            </div>
+          </form>
+        </div>
+        <div class="overflow-x-auto table-responsive">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm">
+                <th class="p-3 text-left">Judul</th>
+                <th class="p-3 text-left">Tanggal</th>
+                <th class="p-3 text-left">Gambar</th>
+                <th class="p-3 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="articlesTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -543,131 +642,19 @@
   </main>
 
   <section id="orderDetailModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[100] p-4">
-    <div class="bg-white p-6 rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center mb-4">
-        <h3 class="text-2xl font-bold text-yellow-700 dark:text-orange-400">Detail Pesanan</h3>
-        <button onclick="closeOrderDetail()" class="text-gray-700 dark:text-gray-700 hover:text-gray-700 dark:hover:text-gray-700 text-2xl">×</button>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Detail Pesanan</h3>
+        <button onclick="closeOrderDetail()" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl">×</button>
       </div>
       <div id="orderDetailContent"></div>
-      <div class="mt-4">
-        <button onclick="closeOrderDetail()" class="w-full px-4 py-2 bg-blue-500/90 rounded-lg text-white hover:bg-orange-500/90 transition">
+      <div class="mt-6">
+        <button onclick="closeOrderDetail()" class="w-full px-4 py-2 bg-gray-500 rounded-lg text-white hover:bg-gray-600 transition font-semibold">
           Tutup
         </button>
       </div>
     </div>
   </section>
-
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-yellow-600 p-6 mb-16 transition-colors">
-      <div class="max-w-7xl mx-auto">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-yellow-700">Kelola Konten Halaman Utama</h2>
-      </div>
-      <form id="cmsForm" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="p-4 bg-yellow-300/70 rounded-lg">
-            <h3 class="font-semibold mb-2 text-gray-600">Hero Banner</h3>
-            <label class="block text-sm mb-1 text-gray-500">Judul</label>
-            <input id="heroTitleInput" type="text" class="w-full border rounded px-3 py-2">
-            <label class="block text-sm mb-1 mt-2 text-gray-500">Subjudul</label>
-            <input id="heroSubtitleInput" type="text" class="w-full border rounded px-3 py-2">
-            <label class="block text-sm mb-1 mt-2 text-gray-500">URL Gambar</label>
-            <input id="heroImageInput" type="text" class="w-full border rounded px-3 py-2" placeholder="assets/banner.jpg">
-          </div>
-          <div class="p-4 bg-blue-300/70 rounded-lg">
-            <h3 class="font-semibold mb-2 text-gray-600">Testimoni</h3>
-            <div class="flex flex-wrap md:flex-nowrap gap-2 mb-2">
-              <input id="testiName" type="text" placeholder="Nama" class="flex-1 min-w-0 border rounded px-3 py-2">
-              <input id="testiText" type="text" placeholder="Komentar" class="flex-1 min-w-0 border rounded px-3 py-2">
-              <button type="button" id="addTestimonialBtn" class="bg-blue-600 text-white px-3 py-2 rounded shrink-0">Tambah</button>
-            </div>
-            <div id="testimonialAdminList" class="space-y-2"></div>
-          </div>
-          <div class="p-4 bg-green-50 rounded-lg">
-            <h3 class="font-semibold mb-2 text-gray-600">Kontak</h3>
-            <label class="block text-sm mb-1 text-gray-600">WhatsApp</label>
-            <input id="contactWaInput" type="text" class="w-full border rounded px-3 py-2">
-            <label class="block text-sm mb-1 mt-2 text-gray-600">Email</label>
-            <input id="contactEmailInput" type="email" class="w-full border rounded px-3 py-2">
-            <label class="block text-sm mb-1 mt-2 text-gray-600">Alamat</label>
-            <textarea id="contactAddressInput" rows="3" class="w-full border rounded px-3 py-2"></textarea>
-          </div>
-        </div>
-        <button type="submit" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition font-semibold">Simpan Konten</button>
-      </form>
-      </div>
-    </section>
-
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-purple-600 p-6 mb-16 transition-colors">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-bold text-purple-700">Kelola Inquiry</h2>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr class="bg-gradient-to-r from-purple-600 to-purple-500 text-white">
-                <th class="border border-purple-700 p-3 text-left">Nama</th>
-                <th class="border border-purple-700 p-3 text-left">Kontak</th>
-                <th class="border border-purple-700 p-3 text-left">Pesan</th>
-                <th class="border border-purple-700 p-3 text-left">Waktu</th>
-                <th class="border border-purple-700 p-3 text-center">Status</th>
-                <th class="border border-purple-700 p-3 text-center">Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="inquiriesTable" class="bg-white dark:bg-white"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-white dark:bg-white rounded-xl shadow-xl border-t-4 border-blue-600 p-6 mb-16 transition-colors">
-      <div class="max-w-7xl mx-auto">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold text-blue-700 dark:text-orange-400">Kelola Artikel</h2>
-        <button onclick="toggleArticleForm()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold">+ Tambah Artikel</button>
-      </div>
-      <div id="articleFormContainer" class="hidden mb-6 p-4 bg-white dark:bg-white rounded-lg border-2 border-gray-200 dark:border-gray-600">
-        <h3 class="text-lg font-semibold mb-3 text-gray-600 dark:text-gray-600">Tambah/Edit Artikel</h3>
-        <form id="articleForm" class="space-y-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-600">Judul *</label>
-              <input type="text" id="articleTitle" class="w-full border border-yellow-400 rounded-lg px-3 py-2 bg-white dark:white dark:text-gray-700 dark:border-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-600">Tanggal Publikasi</label>
-              <input type="date" id="articleDate" class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:white dark:text-gray-600 dark:border-gray-600  hover:text-gray-700 dark:hover:text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
-            </div>
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-text-gray-600">URL Gambar</label>
-            <input type="text" id="articleImage" class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:white dark:text-gray-300 dark:border-gray-600  hover:text-gray-700 dark:hover:text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" placeholder="assets/artikel.jpg">
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-600">Konten *</label>
-            <textarea id="articleContent" rows="5" class="w-full border border-gray-600 rounded-lg px-3 py-2 bg-white dark:white dark:text-gray-300 dark:border-gray-600  hover:text-gray-700 dark:hover:text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors" required></textarea>
-          </div>
-          <div class="flex gap-2">
-            <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold">Simpan Artikel</button>
-            <button type="button" onclick="toggleArticleForm()" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition">Batal</button>
-          </div>
-        </form>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
-              <th class="border border-blue-700 p-3 text-left">Judul</th>
-              <th class="border border-blue-700 p-3 text-left">Tanggal</th>
-              <th class="border border-blue-700 p-3 text-left">Gambar</th>
-              <th class="border border-blue-700 p-3 text-center">Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="articlesTable" class="bg-white dark:bg-black"></tbody>
-        </table>
-      </div>
-      </div>
-    </section>
   <section id="statusUpdateModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[100] p-4">
     <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-2xl w-full max-w-md">
       <div class="flex justify-between items-center mb-4">
@@ -678,14 +665,22 @@
     </div>
   </section>
 
+  <section id="stockUpdateModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-[100] p-4">
+    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-2xl w-full max-w-md">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-2xl font-bold text-yellow-700">✏️ Update Stok</h3>
+        <button onclick="closeStockUpdateModal()" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl">×</button>
+      </div>
+      <div id="stockUpdateContent"></div>
+    </div>
+  </section>
+
   <footer class="bg-amber-900 text-amber-50 text-center p-6 mt-16">
     <div class="max-w-6xl mx-auto">
       <p class="text-lg font-semibold mb-2">KONOHA Catering</p>
       <p class="text-sm mb-2">Layanan Catering Premium untuk Acara Spesial Anda</p>
       <p class="text-xs opacity-75">Copyright © 2025 created by crtswerks. All rights reserved.</p>
     </div>
-  </footer>
-    <p>Copyright ©Konoha Catering 2025 created by crtswerks</p>
   </footer>
 
   <script src="/hostinger/bridge.js"></script>

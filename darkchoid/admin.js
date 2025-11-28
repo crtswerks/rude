@@ -303,42 +303,27 @@ function renderPackageTable() {
   if (!packageTable) return;
   
   packageTable.innerHTML = packages.map((p, i) => `
-    <tr class="hover:bg-gray-50 transition">
-      <td class="border border-gray-200 p-2">
+    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+      <td class="p-3">
         <img src="${p.image}" alt="${p.name}" 
              class="w-20 h-20 object-cover rounded-lg shadow-sm"
              onerror="this.src='assets/placeholder.jpg'">
       </td>
-      <td class="border border-gray-200 p-3">
-        <div class="font-semibold text-gray-800">${p.name}</div>
-      </td>
-      <td class="border border-gray-200 p-3">
-        <div class="font-bold text-yellow-600">Rp${(() => { const pv = p.primaryVariants?.options?.find(o=>o.name==='normal')?.price; const base = typeof pv === 'number' ? pv : (typeof p.price === 'number' ? p.price : 0); return base.toLocaleString(); })()}</div>
-      </td>
-      <td class="border border-gray-200 p-3">
-        <div class="text-sm text-gray-600">
-          ${Array.isArray(p.dishes) ? p.dishes.join(", ") : p.dishes || '-'}
-        </div>
-      </td>
-      <td class="border border-gray-200 p-3">
-        <div class="flex gap-2">
-          <button onclick="editPackage(${i})" 
-                  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition text-sm">✏️ Edit</button>
-          <button onclick="deletePackage(${i})" 
-                  class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition text-sm">🗑️ Hapus</button>
-        </div>
-      </td>
-      <td class="border border-gray-200 p-3">
+      <td class="p-3 font-semibold text-gray-800 dark:text-white">${p.name}</td>
+      <td class="p-3 font-bold text-yellow-600">Rp${(() => { const pv = p.primaryVariants?.options?.find(o=>o.name==='normal')?.price; const base = typeof pv === 'number' ? pv : (typeof p.price === 'number' ? p.price : 0); return base.toLocaleString(); })()}</td>
+      <td class="p-3 text-sm text-gray-600 dark:text-gray-400">${Array.isArray(p.dishes) ? p.dishes.join(", ") : p.dishes || '-'}</td>
+      <td class="p-3">
         <div class="flex items-center gap-2">
-          ${(() => { const st = (typeof p.stock === 'number') ? p.stock : null; const low = (st !== null) && (st <= (settings.lowStockThreshold || 5)); return `<span class=\"text-sm ${low ? 'text-red-600 font-semibold' : ''}\">${st !== null ? st : '-'}</span>`; })()}
+          ${(() => { const st = (typeof p.stock === 'number') ? p.stock : null; const low = (st !== null) && (st <= (settings.lowStockThreshold || 5)); return `<span class="text-sm ${low ? 'text-red-600 font-semibold' : 'dark:text-white'}">${st !== null ? st : '-'}</span>`; })()}
           <button onclick="editPackageStock(${i})" class="bg-indigo-500 text-white px-2 py-1 rounded hover:bg-indigo-600 text-xs">Ubah</button>
         </div>
       </td>
-      <td class="border border-gray-200 p-3 text-center">
-        <button onclick="togglePackageStatus(${i})" 
-                class="${p.active === false ? 'bg-green-500 hover:bg-green-600' : 'bg-yellow-500 hover:bg-yellow-600'} text-white px-3 py-1 rounded transition text-sm">
-          ${p.active === false ? '✅ Aktifkan' : '⏸️ Nonaktifkan'}
-        </button>
+      <td class="p-3 text-center">
+        <div class="flex flex-col gap-1">
+        <button onclick="editPackage(${i})" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition text-sm">✏️ Edit</button>
+        <button onclick="togglePackageStatus(${i})" class="${p.active === false ? 'bg-green-500 hover:bg-green-600' : 'bg-yellow-500 hover:bg-yellow-600'} text-white px-3 py-1 rounded transition text-sm">${p.active === false ? '✅ Aktifkan' : '⏸️ Nonaktifkan'}</button>
+          <button onclick="deletePackage(${i})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition text-sm">🗑️ Hapus</button>
+        </div>
       </td>
     </tr>
   `).join("");
@@ -348,40 +333,27 @@ function renderDishTable() {
   if (!dishTable) return;
   
   dishTable.innerHTML = dishes.map((d, i) => `
-    <tr class="hover:bg-gray-50 transition">
-      <td class="border border-gray-200 p-2">
+    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+      <td class="p-3">
         <img src="${d.image}" alt="${d.name}" 
              class="w-16 h-16 object-cover rounded-lg shadow-sm"
              onerror="this.src='assets/placeholder.jpg'">
       </td>
-      <td class="border border-gray-200 p-3">
-        <div class="font-semibold text-gray-800">${d.name}</div>
-      </td>
-      <td class="border border-gray-200 p-3">
-        ${d.category ? `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">${d.category}</span>` : '-'}
-      </td>
-      <td class="border border-gray-200 p-3">
-        <div class="font-bold text-yellow-600">Rp${(() => { const pv = d.primaryVariants?.options?.find(o=>o.name==='normal')?.price; const base = typeof pv === 'number' ? pv : (typeof d.price === 'number' ? d.price : 0); return base.toLocaleString(); })()}</div>
-      </td>
-      <td class="border border-gray-200 p-3">
-        <div class="flex gap-2">
-          <button onclick="editDish(${i})" 
-                  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition text-sm">✏️ Edit</button>
-          <button onclick="deleteDish(${i})" 
-                  class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition text-sm">🗑️ Hapus</button>
-        </div>
-      </td>
-      <td class="border border-gray-200 p-3">
+      <td class="p-3 font-semibold text-gray-800 dark:text-white">${d.name}</td>
+      <td class="p-3">${d.category ? `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">${d.category}</span>` : '-'}</td>
+      <td class="p-3 font-bold text-yellow-600">Rp${(() => { const pv = d.primaryVariants?.options?.find(o=>o.name==='normal')?.price; const base = typeof pv === 'number' ? pv : (typeof d.price === 'number' ? d.price : 0); return base.toLocaleString(); })()}</td>
+      <td class="p-3">
         <div class="flex items-center gap-2">
-          ${(() => { const st = (typeof d.stock === 'number') ? d.stock : null; const low = (st !== null) && (st <= (settings.lowStockThreshold || 5)); return `<span class=\"text-sm ${low ? 'text-red-600 font-semibold' : ''}\">${st !== null ? st : '-'}</span>`; })()}
+          ${(() => { const st = (typeof d.stock === 'number') ? d.stock : null; const low = (st !== null) && (st <= (settings.lowStockThreshold || 5)); return `<span class="text-sm ${low ? 'text-red-600 font-semibold' : 'dark:text-white'}">${st !== null ? st : '-'}</span>`; })()}
           <button onclick="editDishStock(${i})" class="bg-indigo-500 text-white px-2 py-1 rounded hover:bg-indigo-600 text-xs">Ubah</button>
         </div>
       </td>
-      <td class="border border-gray-200 p-3 text-center">
-        <button onclick="toggleDishStatus(${i})" 
-                class="${d.active === false ? 'bg-green-500 hover:bg-green-600' : 'bg-yellow-500 hover:bg-yellow-600'} text-white px-3 py-1 rounded transition text-sm">
-          ${d.active === false ? '✅ Aktifkan' : '⏸️ Nonaktifkan'}
-        </button>
+      <td class="p-3 text-center">
+        <div class="flex flex-col gap-1">
+        <button onclick="editDish(${i})" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition text-sm">✏️ Edit</button>
+        <button onclick="toggleDishStatus(${i})" class="${d.active === false ? 'bg-green-500 hover:bg-green-600' : 'bg-yellow-500 hover:bg-yellow-600'} text-white px-3 py-1 rounded transition text-sm">${d.active === false ? '✅ Aktifkan' : '⏸️ Nonaktifkan'}</button>
+          <button onclick="deleteDish(${i})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition text-sm">🗑️ Hapus</button>
+        </div>
       </td>
     </tr>
   `).join("");
@@ -1959,21 +1931,72 @@ async function toggleDishStatus(i) {
 }
 
 async function editPackageStock(i) {
-  const val = prompt("Masukkan stok untuk paket (kosong = tanpa batas)", (packages[i].stock ?? '').toString());
-  if (val === null) return;
-  const num = val.trim() === '' ? undefined : (parseInt(val) || 0);
-  packages[i].stock = num;
-  await setAndSync("packages", packages);
-  renderTables();
-  showNotification("Stok paket diperbarui", "success");
+  const pkg = packages[i];
+  const modal = document.getElementById("stockUpdateModal");
+  const content = document.getElementById("stockUpdateContent");
+
+  if (!modal || !content) return;
+
+  content.innerHTML = `
+    <div class="space-y-3">
+      <p class="text-sm text-gray-600">Item: <strong>${pkg.name}</strong></p>
+      <div>
+        <label class="block text-sm font-medium mb-2">Stok Baru:</label>
+        <input type="number" id="stockValueInput" class="form-input" value="${pkg.stock ?? ''}" placeholder="Kosongkan untuk tanpa batas">
+      </div>
+      <div class="flex justify-end gap-2 mt-4">
+        <button onclick="closeStockUpdateModal()" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition">Batal</button>
+        <button onclick="confirmStockUpdate('package', ${i})" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition">Simpan</button>
+      </div>
+    </div>
+  `;
+
+  modal.classList.remove("hidden");
 }
 
 async function editDishStock(i) {
-  const val = prompt("Masukkan stok untuk menu (kosong = tanpa batas)", (dishes[i].stock ?? '').toString());
-  if (val === null) return;
-  const num = val.trim() === '' ? undefined : (parseInt(val) || 0);
-  dishes[i].stock = num;
-  await setAndSync("dishes", dishes);
+  const dish = dishes[i];
+  const modal = document.getElementById("stockUpdateModal");
+  const content = document.getElementById("stockUpdateContent");
+
+  if (!modal || !content) return;
+
+  content.innerHTML = `
+    <div class="space-y-3">
+      <p class="text-sm text-gray-600">Item: <strong>${dish.name}</strong></p>
+      <div>
+        <label class="block text-sm font-medium mb-2">Stok Baru:</label>
+        <input type="number" id="stockValueInput" class="form-input" value="${dish.stock ?? ''}" placeholder="Kosongkan untuk tanpa batas">
+      </div>
+      <div class="flex justify-end gap-2 mt-4">
+        <button onclick="closeStockUpdateModal()" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition">Batal</button>
+        <button onclick="confirmStockUpdate('dish', ${i})" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition">Simpan</button>
+      </div>
+    </div>
+  `;
+
+  modal.classList.remove("hidden");
+}
+
+function closeStockUpdateModal() {
+  const modal = document.getElementById("stockUpdateModal");
+  if (modal) modal.classList.add("hidden");
+}
+
+async function confirmStockUpdate(type, i) {
+  const stockValue = document.getElementById("stockValueInput").value;
+  const num = stockValue.trim() === '' ? undefined : (parseInt(stockValue) || 0);
+
+  if (type === 'package') {
+    packages[i].stock = num;
+    await setAndSync("packages", packages);
+    showNotification("Stok paket diperbarui", "success");
+  } else {
+    dishes[i].stock = num;
+    await setAndSync("dishes", dishes);
+    showNotification("Stok menu diperbarui", "success");
+  }
+
   renderTables();
-  showNotification("Stok menu diperbarui", "success");
+  closeStockUpdateModal();
 }
