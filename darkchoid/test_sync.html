@@ -1,0 +1,132 @@
+// Direct sync test - bypasses bridge.js
+// Paste this in browser console
+
+const API_BASE = '/hostinger/api';
+
+async function directSyncTest() {
+  console.log('🔍 Testing direct save to API...\n');
+  
+  // Test 1: Simple test data
+  console.log('Test 1: Simple JSON');
+  try {
+    const testData = {
+      test: 'simple',
+      timestamp: Date.now()
+    };
+    
+    const response = await fetch(`${API_BASE}/save.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        key: 'test_simple',
+        value: JSON.stringify(testData)
+      })
+    });
+    
+    const result = await response.json();
+    console.log('Response:', response.status, result);
+    
+    if (result.ok) {
+      console.log('✓ Simple JSON save: SUCCESS\n');
+    } else {
+      console.error('✗ Simple JSON save: FAILED -', result.error, '\n');
+    }
+  } catch (error) {
+    console.error('✗ Error:', error, '\n');
+  }
+  
+  // Test 2: Save actual packages data
+  console.log('Test 2: Real packages data');
+  const packagesData = localStorage.getItem('packages');
+  
+  if (packagesData) {
+    console.log('Packages data length:', packagesData.length);
+    console.log('First 200 chars:', packagesData.substring(0, 200));
+    
+    // Verify it's valid JSON
+    try {
+      const parsed = JSON.parse(packagesData);
+      console.log('✓ Packages data is valid JSON');
+      console.log('Parsed type:', typeof parsed, Array.isArray(parsed) ? '(array)' : '');
+      
+      // Now try to save it
+      const response = await fetch(`${API_BASE}/save.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          key: 'packages',
+          value: packagesData // Already a string
+        })
+      });
+      
+      const result = await response.json();
+      console.log('Save response:', response.status, result);
+      
+      if (result.ok) {
+        console.log('✓ Packages save: SUCCESS\n');
+      } else {
+        console.error('✗ Packages save: FAILED -', result.error, '\n');
+      }
+    } catch (error) {
+      console.error('✗ Packages data is INVALID JSON:', error);
+      console.log('Attempting to fix...');
+      
+      // Try to parse and re-stringify
+      try {
+        const cleaned = packagesData.trim();
+        const parsed = JSON.parse(cleaned);
+        const fixed = JSON.stringify(parsed);
+        localStorage.setItem('packages', fixed);
+        console.log('✓ Fixed and re-saved to localStorage\n');
+      } catch (e) {
+        console.error('✗ Cannot fix packages data:', e, '\n');
+      }
+    }
+  } else {
+    console.log('○ No packages data in localStorage\n');
+  }
+  
+  // Test 3: Try all sync keys
+  console.log('Test 3: Syncing all keys');
+  const syncKeys = ['packages', 'dishes', 'discountCodes', 'settings', 'cmsContent', 'articles', 'globalVariantTemplates'];
+  
+  for (const key of syncKeys) {
+    const data = localStorage.getItem(key);
+    
+    if (!data) {
+      console.log(`○ ${key}: No data`);
+      continue;
+    }
+    
+    try {
+      // Verify JSON
+      JSON.parse(data);
+      
+      // Try to save
+      const response = await fetch(`${API_BASE}/save.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key, value: data })
+      });
+      
+      const result = await response.json();
+      
+      if (result.ok) {
+        console.log(`✓ ${key}: Saved (${(data.length / 1024).toFixed(2)} KB)`);
+      } else {
+        console.error(`✗ ${key}: Failed - ${result.error}`);
+      }
+      
+      // Small delay to avoid overwhelming server
+      await new Promise(resolve => setTimeout(resolve, 200));
+      
+    } catch (error) {
+      console.error(`✗ ${key}: Error - ${error.message}`);
+    }
+  }
+  
+  console.log('\n✅ Direct sync test complete');
+}
+
+// Run the test
+directSyncTest();

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KONOHA Catering</title>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-amber-50 text-gray-800 min-h-screen flex flex-col">
+
+  <header class="bg-white text-gray-800 p-3 md:p-4 shadow-lg sticky top-0 z-40 border-b border-amber-200">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <img src="assets/konoha-logo.png" alt="KONOHA Logo" class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white p-1">
+        <h1 class="text-xl md:text-2xl font-bold">KONOHA Catering</h1>
+      </div>
+      <div class="flex items-center space-x-1 md:space-x-2">
+        <a href="blog.html" class="hover:bg-yellow-500 text-gray-700 hover:text-white px-3 py-2 md:px-4 md:py-2 rounded-lg transition font-semibold shadow-sm text-sm md:text-base">
+          Blog
+        </a>
+        <button onclick="openTrackingModal()" 
+                class="hover:bg-yellow-500 text-gray-700 hover:text-white px-3 py-2 md:px-4 md:py-2 rounded-lg transition font-semibold shadow-sm text-sm md:text-base">
+          Lacak Pesanan
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 p-4 max-w-6xl mx-auto w-full pb-32">
+    <!-- Hero Banner -->
+    <section class="relative mb-8 overflow-hidden rounded-2xl shadow-xl">
+      <img id="heroImage" src="assets/paket-ayam-bakar.jpg" alt="Hero" class="w-full h-56 md:h-72 object-cover" onerror="this.src='assets/paket-ayam-bakar.jpg'">
+      <div class="absolute inset-0 bg-gradient-to-r from-amber-700/40 to-yellow-600/30 flex items-center">
+        <div class="p-6 md:p-10 text-white">
+          <h2 id="heroTitle" class="text-2xl md:text-4xl font-extrabold mb-2 drop-shadow-lg">Selamat datang di KONOHA Catering</h2>
+          <p id="heroSubtitle" class="text-sm md:text-lg max-w-xl drop-shadow-md">Makan dulu biar tenang! Pesan paket dan menu a la carte favoritmu.</p>
+          <!-- Hero banner buttons removed as requested -->
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- Testimonials (Carousel) -->
+    <section class="mb-8">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="text-2xl font-bold text-gray-700">Testimoni Pelanggan</h3>
+        <div class="flex gap-2">
+          <button id="testiPrev" class="px-3 py-1 bg-white text-yellow-700 rounded-lg border hover:bg-gray-100">◀</button>
+          <button id="testiNext" class="px-3 py-1 bg-white text-yellow-700 rounded-lg border hover:bg-gray-100">▶</button>
+        </div>
+      </div>
+      <div id="testimonialCarousel" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    </section>
+
+
+    <!-- Tabs -->
+    <div class="flex justify-center mb-6 space-x-2">
+      <button id="tabPackage" class="tab-btn bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-bold shadow-md transition hover:bg-yellow-400 hover:shadow-lg">
+        Paket Menu
+      </button>
+      <button id="tabAlaCarte" class="tab-btn bg-white text-gray-800 border-2 border-yellow-400 px-6 py-3 rounded-lg font-bold shadow-md transition hover:bg-yellow-50 hover:border-yellow-500 hover:shadow-lg">
+        A La Carte
+      </button>
+    </div>
+
+    
+
+    <!-- Packages Section -->
+    <div id="packageSection">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Paket Menu Lengkap</h2>
+      <div id="packageList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="col-span-full text-center py-8">
+          <div class="spinner mx-auto mb-3"></div>
+          <p class="text-gray-500">Memuat menu...</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- A La Carte Section -->
+    <div id="aLaCarteSection" class="hidden">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">Menu A La Carte</h2>
+      <div id="aLaCarteList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="col-span-full text-center py-8">
+          <div class="spinner mx-auto mb-3"></div>
+          <p class="text-gray-500">Memuat menu...</p>
+        </div>
+      </div>
+    </div>
+    
+    <section id="contactSection" class="mt-12 mb-16">
+      <div class="bg-gradient-to-br from-green-700 via-emerald-600 to-teal-600 rounded-2xl p-6 text-white shadow-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white/10 backdrop-blur-md ring-1 ring-white/30 rounded-2xl p-6">
+            <h3 class="text-3xl md:text-4xl font-extrabold drop-shadow-md mb-3">Butuh Bantuan atau Penawaran?</h3>
+          <p class="text-sm md:text-base max-w-2xl opacity-90">Tim kami siap membantu kebutuhan catering Anda. Klik tombol di bawah untuk membuka formulir inquiry dan kami akan segera menghubungi Anda.</p>
+            <form id="inquiryForm" class="mt-4 space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <input id="inqName" type="text" placeholder="Nama" class="w-full p-2 border rounded" required>
+                <input id="inqPhone" type="tel" placeholder="No WhatsApp" class="w-full p-2 border rounded" required>
+                <input id="inqEmail" type="email" placeholder="Email (opsional)" class="w-full p-2 border rounded">
+              </div>
+              <textarea id="inqMessage" rows="3" placeholder="Tuliskan pertanyaan Anda" class="w-full p-2 border rounded" required></textarea>
+              <div class="flex items-center gap-2">
+                <a id="contactWaBtn" href="#" target="_blank" class="inline-flex items-center gap-2 bg-white text-emerald-700 px-4 py-2 rounded-lg hover:bg-gray-100 shadow">Chat WA <span>↗</span></a>
+                <button type="submit" class="inline-flex items-center gap-2 bg-white text-emerald-700 px-4 py-2 rounded-lg hover:bg-gray-100 shadow">Kirim Inquiry <span>✉️</span></button>
+              </div>
+              <div id="inquiryStatus" class="text-sm mt-2"></div>
+            </form>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md ring-1 ring-white/30 rounded-2xl p-6">
+            <div class="grid grid-cols-1 gap-4">
+              <div class="bg-white/20 rounded-lg p-4">
+                <div class="flex items-center gap-2"><span>📱</span><span class="font-semibold">WhatsApp</span></div>
+                <p class="mt-2 text-sm" id="contactWa">-</p>
+              </div>
+              <div class="bg-white/20 rounded-lg p-4">
+                <div class="flex items-center gap-2"><span>📧</span><span class="font-semibold">Email</span></div>
+                <p class="mt-2 text-sm" id="contactEmail">-</p>
+              </div>
+              <div class="bg-white/20 rounded-lg p-4">
+                <div class="flex items-center gap-2"><span>📍</span><span class="font-semibold">Alamat</span></div>
+                <p class="mt-2 text-sm" id="contactAddress">-</p>
+                <button id="copyAddressBtn" class="mt-3 inline-block bg-white text-emerald-700 px-4 py-2 rounded-lg hover:bg-gray-100">Salin Alamat</button>
+              </div>
+              <div class="bg-white/20 rounded-lg p-2">
+                <iframe id="contactMap" class="w-full h-40 rounded" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-amber-900 text-amber-50 text-center p-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-lg font-semibold mb-2">KONOHA Catering</p>
+      <p class="text-sm mb-2">Layanan Catering Premium untuk Acara Spesial Anda</p>
+      <p class="text-xs opacity-75">Copyright © 2025 created by crtswerks. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Cart Summary (collapsible card) -->
+  <aside id="cartAside" class="fixed bottom-4 right-4 z-30">
+    <div class="bg-white shadow-2xl border-2 border-yellow-400 rounded-xl w-[320px]">
+      <div class="flex items-center justify-between p-3 border-b border-yellow-200">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🛒</span>
+          <div>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Total Pesanan</p>
+            <strong id="totalAmount" class="text-xl text-green-700 dark:text-green-400">Rp0</strong>
+          </div>
+        </div>
+        <button id="toggleCartSummary" class="text-yellow-600 hover:text-yellow-800">▼</button>
+      </div>
+      <div id="cartSummaryContainer" class="p-3">
+        <div id="cartSummary" class="text-sm mb-3 max-h-28 overflow-y-auto"></div>
+        <button id="processOrderBtn" 
+                class="w-full bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition font-semibold shadow-lg">
+          Proses Pesanan
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Cart Button -->
+  <button id="mobileCartButton" class="mobile-cart-button hidden">
+    🛒
+    <span id="cartCountBadge" class="mobile-cart-badge">0</span>
+  </button>
+
+  <!-- Mobile Cart Bottom Sheet -->
+  <section id="mobileCartSheet" class="hidden fixed inset-0 z-40">
+    <div class="mobile-cart-backdrop"></div>
+    <div class="mobile-cart-panel">
+      <div class="mobile-cart-header">
+        <div class="mobile-cart-title">Keranjang</div>
+        <div class="mobile-cart-total" id="totalAmountMobile">Rp0</div>
+        <button id="mobileCartClose" class="mobile-cart-close">×</button>
+      </div>
+      <div id="cartSummaryMobile" class="mobile-cart-body"></div>
+      <div class="mobile-cart-footer">
+        <button id="processOrderBtnMobile" class="mobile-cart-action">Proses Pesanan</button>
+      </div>
+    </div>
+  </section>
+    
+
+  <!-- Order Tracking Modal -->
+  <section id="trackingModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4">
+    <div class="bg-white p-6 rounded-xl shadow-2xl w-full max-w-md">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-2xl font-bold text-green-700 dark:text-green-400">📦 Lacak Pesanan</h3>
+        <button onclick="closeTrackingModal()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+      </div>
+      
+      <div class="space-y-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Kode Pelacakan</label>
+          <input type="text" id="trackingInput" placeholder="Contoh: KN12345678" 
+                 class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" />
+        </div>
+        
+        <button onclick="trackOrder()" 
+                class="w-full bg-yellow-500 text-gray-900 px-4 py-3 rounded-lg hover:bg-yellow-400 transition font-semibold">
+          🔍 Lacak Pesanan
+        </button>
+      </div>
+      
+      <div id="trackingResult" class="mt-4"></div>
+    </div>
+  </section>
+
+  <!-- Step 1: Order Summary Confirmation -->
+  <section id="orderSummaryContainer" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4">
+    <div class="bg-white p-6 rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto relative">
+      <button onclick="closeSummary()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10">
+        ×
+      </button>
+      <h3 class="text-2xl font-bold mb-4 text-center text-green-700 dark:text-green-400">
+        📋 Ringkasan Pesanan
+      </h3>
+      <div id="orderSummaryDetails" class="text-sm mb-4 space-y-2"></div>
+      <div class="flex justify-between gap-3">
+        <button onclick="closeSummary()" 
+                class="flex-1 px-4 py-2 bg-gray-400 rounded-lg text-white hover:bg-gray-500 transition">
+          Kembali
+        </button>
+        <button id="confirmSummaryBtn" 
+                class="flex-1 px-4 py-2 bg-yellow-500 rounded-lg text-gray-900 hover:bg-yellow-400 transition font-semibold">
+          Lanjut ke Pembayaran
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 2: Checkout Form -->
+  <section id="checkoutContainer" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4">
+    <form id="checkoutForm" class="bg-white p-6 rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+      <h3 class="text-2xl font-bold mb-4 text-center text-green-700 dark:text-green-400">
+        💳 Checkout Pemesanan
+      </h3>
+
+      <!-- Delivery Area Notice -->
+      <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="text-sm text-blue-800">
+          <span class="font-semibold">📍 Catatan Pengiriman:</span><br>
+          Pengiriman hanya berlaku untuk <strong>Area Kota Bandung dan sekitarnya</strong>. 
+          Untuk pengiriman diluar area Kota Bandung dan sekitarnya harap mengajukan inquiry.
+        </p>
+      </div>
+      
+      <div class="space-y-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
+          <input id="custName" type="text" placeholder="Masukkan nama Anda" 
+                 class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Nomor WhatsApp</label>
+          <input id="custPhone" type="tel" placeholder="08xxxxxxxxxx" 
+                 class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input id="custEmail" type="email" placeholder="email@example.com" 
+                 class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Alamat Pengiriman</label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs mb-1">Jalan</label>
+              <input id="addrStreet" type="text" placeholder="Nama jalan"
+                     class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+            </div>
+            <div>
+              <label class="block text-xs mb-1">No</label>
+              <input id="addrNo" type="text" placeholder="No rumah/gedung"
+                     class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+            </div>
+            <div>
+              <label class="block text-xs mb-1">RT/RW</label>
+              <input id="addrRTRW" type="text" placeholder="001/002"
+                     class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" />
+            </div>
+            <div>
+              <label class="block text-xs mb-1">Kelurahan</label>
+              <input id="addrKelurahan" type="text" placeholder="Kelurahan"
+                     class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" />
+            </div>
+            <div>
+              <label class="block text-xs mb-1">Kecamatan</label>
+              <input id="addrKecamatan" type="text" placeholder="Kecamatan"
+                     class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+            </div>
+            <div>
+              <label class="block text-xs mb-1">Kota/Kabupaten</label>
+              <input id="addrKotaKab" type="text" placeholder="Kota/Kabupaten"
+                     class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+            </div>           
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Waktu Pengiriman</label>
+          <input id="deliveryTime" type="datetime-local" 
+                 class="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600" required />
+          <p class="text-xs text-gray-500 mt-1">Minimal 1 jam dari sekarang</p>
+        </div>
+      </div>
+
+      <div id="checkoutSummary" class="text-sm my-4 p-3 bg-yellow-50 rounded-lg"></div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Metode Pembayaran</label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-2">
+              <input type="radio" name="paymentMethod" value="qris" required>
+              <span>QRIS</span>
+            </label>
+            <div id="qrisInfo" class="hidden p-3 bg-gray-50 rounded-lg">
+              <img src="assets/konoha-qris.png" alt="QRIS" class="w-full max-h-48 object-contain rounded-md">
+            </div>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="paymentMethod" value="bank" required>
+              <span>Bank Transfer</span>
+            </label>
+            <div id="bankInfo" class="hidden p-3 bg-gray-50 rounded-lg text-sm">
+              <p><strong>BANK BCA</strong></p>
+              <p>123 456 7890</p>
+              <p>AN SUNTORO SCHMEITZ</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Upload Bukti Pembayaran</label>
+          <input id="paymentProof" type="file" accept="image/*" 
+                 class="w-full p-2 border rounded-lg" required />
+          <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG (Max 5MB)</p>
+          <div id="uploadProgressContainer" class="hidden mt-2">
+            <div class="w-full h-2 bg-gray-200 rounded">
+              <div id="uploadProgressBar" class="h-2 bg-yellow-600 rounded" style="width:0%"></div>
+            </div>
+            <div id="uploadProgressText" class="text-xs text-gray-600 mt-1">Mengupload: 0%</div>
+          </div>
+          <div id="uploadStatus" class="hidden mt-2"></div>
+        </div>
+      
+      <div class="flex justify-between gap-3">
+        <button type="button" onclick="closeCheckout()" 
+                class="flex-1 px-4 py-3 bg-gray-400 rounded-lg text-white hover:bg-gray-500 transition">
+          Kembali
+        </button>
+        <button type="submit" id="finalConfirmBtn" disabled 
+                class="flex-1 px-4 py-3 bg-yellow-500 rounded-lg text-gray-900 font-semibold opacity-50 cursor-not-allowed">
+          Konfirmasi & Bayar
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Success Modal -->
+  <section id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4">
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
+      <div class="text-6xl mb-4">✅</div>
+      <h3 class="text-2xl font-bold mb-3 text-emerald-600">Pesanan Berhasil!</h3>
+      <p class="mb-2">Kode Pesanan Anda:</p>
+      <p id="trackingCode" class="text-3xl font-bold text-yellow-600 mb-4"></p>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+        Data pesanan Anda telah dikirim ke WhatsApp & Email admin. 
+        Anda akan segera dihubungi untuk konfirmasi.
+      </p>
+      <button onclick="closeSuccessModal()" 
+              class="w-full px-6 py-3 bg-yellow-500 text-gray-900 rounded-lg hover:bg-yellow-400 transition font-semibold">
+        Kembali ke Beranda
+      </button>
+    </div>
+  </section>
+
+  <script src="/hostinger/bridge.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Collapsible cart summary
+    const toggleBtn = document.getElementById('toggleCartSummary');
+    const cartContainer = document.getElementById('cartSummaryContainer');
+    if (toggleBtn && cartContainer) {
+      toggleBtn.addEventListener('click', () => {
+        cartContainer.classList.toggle('hidden');
+        toggleBtn.textContent = cartContainer.classList.contains('hidden') ? '▲' : '▼';
+      });
+    }
+
+    // Mobile cart interactions
+    const mobileCartBtn = document.getElementById('mobileCartButton');
+    const mobileCartSheet = document.getElementById('mobileCartSheet');
+    const mobileCartClose = document.getElementById('mobileCartClose');
+    const processOrderBtnMobile = document.getElementById('processOrderBtnMobile');
+    if (mobileCartBtn && mobileCartSheet) {
+      mobileCartBtn.addEventListener('click', () => {
+        mobileCartSheet.classList.remove('hidden');
+      });
+    }
+    if (mobileCartClose && mobileCartSheet) {
+      mobileCartClose.addEventListener('click', () => {
+        mobileCartSheet.classList.add('hidden');
+      });
+    }
+    if (mobileCartSheet) {
+      mobileCartSheet.addEventListener('click', (e) => {
+        if (e.target === mobileCartSheet) mobileCartSheet.classList.add('hidden');
+      });
+    }
+    if (processOrderBtnMobile) {
+      processOrderBtnMobile.addEventListener('click', () => {
+        const desktopProcessBtn = document.getElementById('processOrderBtn');
+        if (desktopProcessBtn) desktopProcessBtn.click();
+        mobileCartSheet.classList.add('hidden');
+      });
+    }
+
+    // Switch Tabs
+    document.getElementById("tabPackage").addEventListener("click", () => {
+      document.getElementById("packageSection").classList.remove("hidden");
+      document.getElementById("aLaCarteSection").classList.add("hidden");
+      document.getElementById("tabPackage").classList.add("bg-yellow-500", "text-gray-900");
+      document.getElementById("tabPackage").classList.remove("bg-white", "text-gray-800", "border-yellow-400", "border-2");
+      document.getElementById("tabAlaCarte").classList.remove("bg-yellow-500", "text-gray-900");
+      document.getElementById("tabAlaCarte").classList.add("bg-white", "text-gray-800", "border-yellow-400", "border-2");
+    });
+    
+    document.getElementById("tabAlaCarte").addEventListener("click", () => {
+      document.getElementById("aLaCarteSection").classList.remove("hidden");
+      document.getElementById("packageSection").classList.add("hidden");
+      document.getElementById("tabAlaCarte").classList.add("bg-yellow-500", "text-gray-900");
+      document.getElementById("tabAlaCarte").classList.remove("bg-white", "text-gray-800", "border-yellow-400", "border-2");
+      document.getElementById("tabPackage").classList.remove("bg-yellow-500", "text-gray-900");
+      document.getElementById("tabPackage").classList.add("bg-white", "text-gray-800", "border-yellow-400", "border-2");
+    });
+  </script>
+</body>
+</html>

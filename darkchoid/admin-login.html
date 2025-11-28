@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KONOHA Admin Login</title>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>.login-real{display:none!important}</style>
+</head>
+<head>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body class="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 flex justify-center items-center h-screen dark:from-gray-800 dark:via-gray-900 dark:to-black">
+  <script>
+    try {
+      var p = (location.pathname || '').toLowerCase();
+      if ((p.includes('admin-login')) && window.top === window.self) {
+        document.body.innerHTML = `
+          <section class="min-h-screen flex items-center justify-center">
+            <div class="max-w-md text-center p-6">
+              <div class="text-6xl mb-4">🚫</div>
+              <h1 class="text-2xl font-bold mb-2">This Page Does Not Exist</h1>
+              <p class="text-gray-100">Sorry, the page you are looking for could not be found. It's just an accident that was not intentional.</p>
+            </div>
+          </section>
+        `;
+      }
+    } catch (e) {}
+  </script>
+  <section class="min-h-screen flex items-center justify-center w-full">
+    <div class="max-w-md text-center p-6 bg-white/80 rounded-xl">
+      <div class="text-6xl mb-4">🚫</div>
+      <h1 class="text-2xl font-bold mb-2">This Page Does Not Exist</h1>
+      <p class="text-gray-700">Sorry, the page you are looking for could not be found. It's just an accident that was not intentional.</p>
+    </div>
+  </section>
+  
+  <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 transform transition hover:scale-105 login-real">
+    <div class="text-center mb-6">
+      <img src="assets/konoha-logo.png" alt="KONOHA Logo" class="mx-auto w-24 h-24 mb-4 rounded-full border-4 border-yellow-500 shadow-lg">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Admin Login</h2>
+      <p class="text-gray-600 text-sm">KONOHA Catering Dashboard</p>
+    </div>
+    
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-gray-400">👤</span>
+          <input type="text" id="username" placeholder="Masukkan username" 
+                 class="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-yellow-500 focus:outline-none transition" required>
+        </div>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-gray-400">🔒</span>
+          <input type="password" id="password" placeholder="Masukkan password" 
+                 class="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-yellow-500 focus:outline-none transition" required>
+        </div>
+      </div>
+      
+      <button type="submit" 
+              class="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition font-semibold shadow-lg transform hover:scale-105">
+        🚀 Login
+      </button>
+    </form>
+    
+    <div id="loginError" class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm text-center">
+      ❌ Username atau password salah!
+    </div>
+    
+    <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+      <p class="text-xs text-gray-600 text-center mb-2">📝 Default Credentials:</p>
+      <div class="text-xs text-gray-500 space-y-1">
+        <p><strong>Username:</strong> sundakage</p>
+        <p><strong>Password:</strong> K0n0h4m4ru17!</p>
+      </div>
+    </div>
+    
+    <div class="mt-4 text-center">
+      <a href="index.html" class="text-sm text-yellow-600 hover:text-yellow-700 hover:underline">
+        ← Kembali ke Halaman Utama
+      </a>
+    </div>
+  </div>
+
+  <script src="/hostinger/bridge.js"></script>
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const loginError = document.getElementById("loginError");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const user = usernameInput.value.trim();
+      const pass = passwordInput.value.trim();
+      
+      try {
+        const res = await fetch('/hostinger/api/login.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: user, password: pass })
+        });
+        const j = await res.json();
+        if (res.ok && j && j.ok) {
+          localStorage.setItem('adminLoggedIn', 'true');
+          loginForm.innerHTML = `
+            <div class="text-center py-8">
+              <div class="text-6xl mb-4">✅</div>
+              <p class="text-xl font-bold text-green-600">Login Berhasil!</p>
+              <p class="text-sm text-gray-600 mt-2">Redirecting...</p>
+            </div>
+          `;
+          setTimeout(() => { window.location.href = 'admin.html'; }, 1000);
+        } else {
+          throw new Error('Unauthorized');
+        }
+      } catch (err) {
+        loginError.classList.remove('hidden');
+        usernameInput.classList.add('border-red-500');
+        passwordInput.classList.add('border-red-500');
+        loginForm.classList.add('animate-shake');
+        setTimeout(() => { loginForm.classList.remove('animate-shake'); }, 500);
+        setTimeout(() => {
+          loginError.classList.add('hidden');
+          usernameInput.classList.remove('border-red-500');
+          passwordInput.classList.remove('border-red-500');
+        }, 3000);
+      }
+    });
+
+    // Hide error on input
+    usernameInput.addEventListener("input", () => {
+      loginError.classList.add("hidden");
+    });
+    
+    passwordInput.addEventListener("input", () => {
+      loginError.classList.add("hidden");
+    });
+  </script>
+
+  <style>
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+      20%, 40%, 60%, 80% { transform: translateX(10px); }
+    }
+    .animate-shake {
+      animation: shake 0.5s;
+    }
+  </style>
+  <footer class="bg-amber-900 text-amber-50 text-center p-6 mt-16 fixed bottom-0 left-0 right-0">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-lg font-semibold mb-2">KONOHA Catering</p>
+      <p class="text-sm mb-2">Layanan Catering Premium untuk Acara Spesial Anda</p>
+      <p class="text-xs opacity-75">Copyright © 2025 created by crtswerks. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

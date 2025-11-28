@@ -1,0 +1,11 @@
+[19-Nov-2025 04:18:19 UTC] JSON decode error: Syntax error
+[19-Nov-2025 04:18:49 UTC] JSON decode error: Syntax error
+[19-Nov-2025 04:25:59 UTC] JSON decode error: Syntax error | Raw: 
+[19-Nov-2025 04:27:09 UTC] JSON decode error: Syntax error | Raw: 
+[19-Nov-2025 08:00:07 UTC] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\Users\User\Downloads\Konoha Catering2\hostinger\api\config.php on line 13
+[19-Nov-2025 08:00:07 UTC] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in C:\Users\User\Downloads\Konoha Catering2\hostinger\api\config.php:25
+Stack trace:
+#0 {main}
+  thrown in C:\Users\User\Downloads\Konoha Catering2\hostinger\api\config.php on line 25
+[19-Nov-2025 11:06:24 UTC] Save error: MySQL server has gone away
+[19-Nov-2025 13:26:25 UTC] JSON decode error: Control character error, possibly incorrectly encoded | Raw: {"key":"orders","value":"[{\"trackCode\":\"KN44733024\",\"name\":\"UDG Gear\",\"phone\":\"085643840122\",\"email\":\"\",\"address\":\"Jl. Kiputih No. 1E\\nCiumbeluit Cidadap\",\"delivery\":\"2025-11-2
